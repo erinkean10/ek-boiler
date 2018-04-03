@@ -1,0 +1,65 @@
+body {
+    background-color: var(--page-bg);
+    margin:40px;//this puts space between the boxes and the end of the page. this is also helpful to see the numbers when using inspect for grids in firefox.
+}
+header,
+nav,
+main,
+aside,
+footer {
+    border: solid 1px black;
+    border-radius: 10px;
+    position: relative;
+    min-height: 200px;
+
+    &::after {
+    @include info;
+}//end after
+}//end box
+
+
+/*This is the old way of doing it. you can write colors or the $color.header {
+    background:lavenderblush;
+}
+nav {
+    background:mistyrose;
+}
+main {
+    background:lightpink;
+}
+aside {
+    background:lightsalmon;
+}
+footer {
+    background:indianred;
+}*/
+//this is how to do variable tags. It is really helpful with grids
+header {
+    background: var(--header-bg);
+    &::after {content:"header";}//this is adding the little title of what each box is
+    grid-area: title;
+}
+nav {
+    background: var(--nav-bg);
+    &::after {content:"nav";}
+    grid-area: navigation;
+}
+main {
+    background: var(--main-bg);
+    &::after {content:"main";}
+    grid-area: copy;
+    //grid-column: 1/4;this spans main content clmn 1-4
+   // grid-row: 3/4;this spans main content row 3-4
+    
+}
+aside {
+    background: var(--aside-bg);
+    &::after {content:"aside";}
+    grid-area: sidebar;
+}
+footer {
+    background: var(--footer-bg);
+    &::after {content:"footer";}
+    grid-area: foots;
+}
+

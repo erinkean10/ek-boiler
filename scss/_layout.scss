@@ -1,0 +1,28 @@
+//temp margin to see line numbers in firefox
+
+.site {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;//this makes columns. play around with the %. the number of numbers you put will determine how many columns there are. can use % as well as fr which stands for fraction. examples: 1fr 2fr 1fr or 75% 25%. 
+    grid-template-columns: minmax(10em,20em) 1fr;//a way to set min and max for the columns
+   //grid-template-columns: repeat(4,2fr 30px);this makes 4 rows 1 fr each for odd colums and 10px for all even columns
+    grid-template-rows: 2fr 1fr 4fr;
+    grid-gap:2em 1em;//this put a gutter. can have one or two numbers first number is in between rows and second is in between columns. use em,percentage, or px
+    grid-template-areas: //dont use tags like header. 
+        "title ."
+        "navigation navigation"
+        "copy sidebar"
+        "copy foots"
+        //this is the easier way to assign grids instead of using the numbers 1/4. this is like creating a map. saying title title will make the two columns title. so it is literally a map. so copy foots will have copy which is the word for main content in the bottom left spot and the foots which is the word used for footer will be in the bottom right space. if you want one of them to be blank just put a dot.
+}
+
+@media screen and (max-width:500px) {
+    .site {
+        grid-template-areas:
+            "title title"
+            "copy copy"
+            "sidebar sidebar"
+            "foots foots"
+            "navigation navigation"
+            
+    }
+}

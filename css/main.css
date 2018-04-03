@@ -432,6 +432,17 @@ template {
   display: none;
 }
 
+:root {
+  --page-bg: #FFFFFF;
+  --header-bg: #FFFEFA;
+  --nav-bg: #FCCCC3;
+  --main-bg: #FBE8C2;
+  --aside-bg: #F6D6BF;
+  --footer-bg: #FFFEFA;
+  --info-bg: #FCA59D;
+  --info-txt: #FFCBF7;
+}
+
 /*! HTML5 Boilerplate v6.0.1 | MIT License | https://html5boilerplate.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -516,6 +527,94 @@ textarea {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+body {
+  background-color: var(--page-bg);
+  margin: 40px;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  border: solid 1px black;
+  border-radius: 10px;
+  position: relative;
+  min-height: 200px;
+}
+header::after,
+nav::after,
+main::after,
+aside::after,
+footer::after {
+  display: block;
+  position: absolute;
+  font-family: "input mono", "courier new", courier, monospace;
+  background: var(--info-bg);
+  color: var(--info-txt);
+  top: 1em;
+  left: 1em;
+  height: 1.25em;
+  width: auto;
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+}
+
+/*This is the old way of doing it. you can write colors or the $color.header {
+    background:lavenderblush;
+}
+nav {
+    background:mistyrose;
+}
+main {
+    background:lightpink;
+}
+aside {
+    background:lightsalmon;
+}
+footer {
+    background:indianred;
+}*/
+header {
+  background: var(--header-bg);
+  grid-area: title;
+}
+header::after {
+  content: "header";
+}
+
+nav {
+  background: var(--nav-bg);
+  grid-area: navigation;
+}
+nav::after {
+  content: "nav";
+}
+
+main {
+  background: var(--main-bg);
+  grid-area: copy;
+}
+main::after {
+  content: "main";
+}
+
+aside {
+  background: var(--aside-bg);
+  grid-area: sidebar;
+}
+aside::after {
+  content: "aside";
+}
+
+footer {
+  background: var(--footer-bg);
+  grid-area: foots;
+}
+footer::after {
+  content: "footer";
 }
 
 /* ==========================================================================
@@ -682,5 +781,19 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid;
+  }
+}
+.site {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(10em, 20em) 1fr;
+  grid-template-rows: 2fr 1fr 4fr;
+  grid-gap: 2em 1em;
+  grid-template-areas: "title ." "navigation navigation" "copy sidebar" "copy foots";
+}
+
+@media screen and (max-width: 500px) {
+  .site {
+    grid-template-areas: "title title" "copy copy" "sidebar sidebar" "foots foots" "navigation navigation";
   }
 }

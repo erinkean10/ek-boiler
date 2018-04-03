@@ -1,0 +1,12 @@
+:root {
+    //page background colors
+    --page-bg: #FFFFFF;
+    --header-bg: #FFFEFA;
+    --nav-bg: #FCCCC3;
+    --main-bg:#FBE8C2;
+    --aside-bg: #F6D6BF;
+    --footer-bg: #FFFEFA;
+    --info-bg:#FCA59D;
+    --info-txt:#FFCBF7;
+}
+//this is using css variables because css is going to take over scss and this is the first step so dont use scss variables anymore. meaning the $.
